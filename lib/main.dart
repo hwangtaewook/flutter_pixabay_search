@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pixabay_search/data/data_source/photo_data_source.dart';
+import 'package:flutter_pixabay_search/data/repository/photo_respository_impl.dart';
+import 'package:flutter_pixabay_search/presentation/serach_list/search_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'presentation/serach_list/search_list_screen.dart';
 
@@ -17,7 +21,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SearchListScreen(),
+      home: ChangeNotifierProvider(
+        create: (_) => SearchListViewModel(
+          photoRepository: PhotoRepositoryImpl(
+            photoDataSource: PhotoDataSource(),
+          ),
+        ),
+        child: const SearchListScreen(),
+      ),
     );
   }
 }
