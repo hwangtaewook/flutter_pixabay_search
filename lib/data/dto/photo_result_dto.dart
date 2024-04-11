@@ -1,11 +1,11 @@
-class PhotoDto {
-  PhotoDto({
+class PhotoResultDto {
+  PhotoResultDto({
     this.total,
     this.totalHits,
     this.hits,
   });
 
-  PhotoDto.fromJson(dynamic json) {
+  PhotoResultDto.fromJson(dynamic json) {
     total = json['total'];
     totalHits = json['totalHits'];
     if (json['hits'] != null) {
