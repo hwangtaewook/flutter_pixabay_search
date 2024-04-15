@@ -18,7 +18,7 @@ class SearchListViewModel with ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  void onSearching(String query) async {
+  void onSearch(String query) async {
     _isLoading = true;
     notifyListeners();
 

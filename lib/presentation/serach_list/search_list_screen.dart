@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pixabay_search/data/model/photo.dart';
+import 'package:flutter_pixabay_search/presentation/photo_detail/photo_detail_screen.dart';
+import 'package:flutter_pixabay_search/presentation/serach_list/components/image_card.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -45,19 +49,25 @@ class _SearchListScreenState extends State<SearchListScreen> {
     // ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('이미지 검색'),
+        title: const Text('이미지 검색'),
       ),
       body: Column(
         children: [
           TextField(
+            controller: _queryTextEditingController,
+            onSubmitted: (value) {
+              final query = _queryTextEditingController.text;
+              viewModel.onSearch(query);
+            },
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               hintText: '검색어',
               suffixIcon: IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   final query = _queryTextEditingController.text;
-                  viewModel.onSearching(query);
+                  viewModel.onSearch(query);
+                  print(query);
                 },
               ),
             ),
@@ -65,21 +75,29 @@ class _SearchListScreenState extends State<SearchListScreen> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: GridView.count(
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                children:
-                    // _photos.map((e) => Image.network(e.url)).toList(),
-                    viewModel.photos
-                        .map((e) => ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.network(
-                              e.url,
-                              fit: BoxFit.cover,
-                            )))
-                        .toList(),
-              ),
+              child: viewModel.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      children:
+                          // _photos.map((e) => Image.network(e.url)).toList(),
+                          viewModel.photos
+                              .map((e) => GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PhotoDetailScreen(photo: e),
+                                        ),
+                                      );
+                                    },
+                                    child: ImageCard(photo: e),
+                                  ))
+                              .toList(),
+                    ),
             ),
           ),
         ],

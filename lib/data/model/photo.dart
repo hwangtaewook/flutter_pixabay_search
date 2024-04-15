@@ -10,6 +10,7 @@ class Photo with _$Photo {
     required int id,
     required String url,
     required String tags,
+    required String largeUrl,
   }) = _Photo;
 
   factory Photo.fromJson(Map<String, Object?> json) => _$PhotoFromJson(json);
