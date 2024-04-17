@@ -20,7 +20,7 @@ class SearchListViewModel with ChangeNotifier {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
     _state = state.copyWith(
-      photos: await _getPhotoUseCase.excute(query),
+      photos: await _getPhotoUseCase.execute(query),
       isLoading: false,
     );
     notifyListeners();

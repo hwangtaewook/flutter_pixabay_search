@@ -8,7 +8,7 @@ class GetPhotoUseCase {
     required PhotoRepository photoRepository,
   }) : _photoRepository = photoRepository;
 
-  Future<List<Photo>> excute(String query) async {
+  Future<List<Photo>> execute(String query) async {
     return (await _photoRepository.getPhotos(query)).take(3).toList();
   }
 }

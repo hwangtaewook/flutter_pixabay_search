@@ -83,18 +83,20 @@ class _SearchListScreenState extends State<SearchListScreen> {
                       children:
                           // _photos.map((e) => Image.network(e.url)).toList(),
                           viewModel.state.photos
-                              .map((e) => GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              PhotoDetailScreen(photo: e),
-                                        ),
-                                      );
-                                    },
-                                    child: ImageCard(photo: e),
-                                  ))
+                              .map(
+                                (e) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            PhotoDetailScreen(photo: e),
+                                      ),
+                                    );
+                                  },
+                                  child: ImageCard(photo: e),
+                                ),
+                              )
                               .toList(),
                     ),
             ),
