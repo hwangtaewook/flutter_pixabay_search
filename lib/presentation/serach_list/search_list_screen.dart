@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pixabay_search/domain/model/photo.dart';
 import 'package:flutter_pixabay_search/presentation/photo_detail/photo_detail_screen.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/components/image_card.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/search_list_view_model.dart';
@@ -75,7 +74,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: viewModel.isLoading
+              child: viewModel.state.isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : GridView.count(
                       mainAxisSpacing: 10,
@@ -83,7 +82,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
                       crossAxisCount: 2,
                       children:
                           // _photos.map((e) => Image.network(e.url)).toList(),
-                          viewModel.photos
+                          viewModel.state.photos
                               .map((e) => GestureDetector(
                                     onTap: () {
                                       Navigator.push(
