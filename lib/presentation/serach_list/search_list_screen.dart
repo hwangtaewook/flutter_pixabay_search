@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pixabay_search/data/model/photo.dart';
+import 'package:flutter_pixabay_search/domain/model/photo.dart';
 import 'package:flutter_pixabay_search/presentation/photo_detail/photo_detail_screen.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/components/image_card.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/search_list_view_model.dart';

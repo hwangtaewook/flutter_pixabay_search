@@ -1,7 +1,7 @@
 import 'package:flutter_pixabay_search/data/data_source/photo_data_source.dart';
 import 'package:flutter_pixabay_search/data/mapper/photo_mapper.dart';
-import 'package:flutter_pixabay_search/data/model/photo.dart';
-import 'package:flutter_pixabay_search/data/repository/photo_repository.dart';
+import 'package:flutter_pixabay_search/domain/model/photo.dart';
+import 'package:flutter_pixabay_search/domain/repository/photo_repository.dart';
 
 class PhotoRepositoryImpl implements PhotoRepository {
   final PhotoDataSource _photoDataSource;

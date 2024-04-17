@@ -1,5 +1,5 @@
 import 'package:flutter_pixabay_search/data/dto/photo_result_dto.dart';
-import 'package:flutter_pixabay_search/data/model/photo.dart';
+import 'package:flutter_pixabay_search/domain/model/photo.dart';
 
 extension ToPhoto on Hits {
   Photo toPhoto() {

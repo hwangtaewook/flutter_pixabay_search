@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_pixabay_search/presentation/serach_list/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/model/photo.dart';
+import '../../domain/model/photo.dart';
 
 class PhotoDetailScreen extends StatelessWidget {
   final Photo photo;

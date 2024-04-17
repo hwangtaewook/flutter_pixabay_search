@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_pixabay_search/data/repository/photo_repository.dart';
+import 'package:flutter_pixabay_search/domain/repository/photo_repository.dart';
 
-import '../../data/model/photo.dart';
+import '../../domain/model/photo.dart';
 
 class SearchListViewModel with ChangeNotifier {
   final PhotoRepository _photoRepository;
